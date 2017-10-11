@@ -1,0 +1,1141 @@
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="NERSC Technical Documentation">
+      
+      
+      
+        <meta name="author" content="NERSC">
+      
+      
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+      
+      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.10.2">
+    
+    
+      
+        <title>Example 2 - NERSC Technical Documentation</title>
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr-e826f8942a.js"></script>
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application-408828a02a.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-23f75ab9c7.palette.css">
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    
+  </head>
+  
+  
+  
+  
+    <body data-md-color-primary="cyan" data-md-color-accent="cyan">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="NERSC Technical Documentation" class="md-header-nav__button md-logo">
+          
+            
+              <img src="../../img/logo.png" width="68" height="24">
+            
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
+          
+            
+              
+                <span class="md-header-nav__parent">
+                  Demo
+                </span>
+              
+            
+            Example 2
+          
+        </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="search"></label>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <label class="md-icon md-search__icon" for="search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
+          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../.." title="Home" class="md-tabs__link">
+        Home
+      </a>
+    
+  </li>
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../demo/" title="Demo" class="md-tabs__link md-tabs__link--active">
+          Demo
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../data/analytics/analytics/" title="Data" class="md-tabs__link">
+          Data
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../performance/case-studies/case-studies/" title="Performance" class="md-tabs__link">
+          Performance
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../services/jupyter/" title="Services" class="md-tabs__link">
+          Services
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../software/analytics/analytics/" title="Software" class="md-tabs__link">
+          Software
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../systems/cori/cori/" title="Systems" class="md-tabs__link">
+          Systems
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../tutorials/getting-started/getting-started/" title="Tutorials" class="md-tabs__link">
+          Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <div class="md-nav__button md-logo">
+      
+        
+          <img src="../../img/logo.png">
+        
+      
+    </div>
+    NERSC Technical Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Demo
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Demo
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../demo/" title="Example" class="md-nav__link">
+      Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Example 2
+      </label>
+    
+    <a href="./" title="Example 2" class="md-nav__link md-nav__link--active">
+      Example 2
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cori-performance" title="Cori performance" class="md-nav__link">
+    Cori performance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-example" title="Basic example" class="md-nav__link">
+    Basic example
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compilation" title="Compilation" class="md-nav__link">
+    Compilation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-executable" title="Running the executable" class="md-nav__link">
+    Running the executable
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some-source-code" title="Some source code" class="md-nav__link">
+    Some source code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latex-support" title="LaTex support" class="md-nav__link">
+    LaTex support
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/analytics/analytics/" title="Analytics" class="md-nav__link">
+      Analytics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/management/management/" title="Management" class="md-nav__link">
+      Management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/transfer/transfer/" title="Transfer" class="md-nav__link">
+      Transfer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../data/visualization/visualization/" title="Visualization" class="md-nav__link">
+      Visualization
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Performance
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Performance
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../performance/case-studies/case-studies/" title="case-studies" class="md-nav__link">
+      case-studies
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../performance/optimization/optimization/" title="optimization" class="md-nav__link">
+      optimization
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../performance/variability/variability/" title="variability" class="md-nav__link">
+      variability
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Services
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Services
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../services/jupyter/" title="jupyter" class="md-nav__link">
+      jupyter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../services/nx/" title="nx" class="md-nav__link">
+      nx
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../services/science-gateways/" title="science-gateways" class="md-nav__link">
+      science-gateways
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../services/api/" title="API" class="md-nav__link">
+      API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Software
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Software
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../software/analytics/analytics/" title="analytics" class="md-nav__link">
+      analytics
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      Applications
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        Applications
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../software/applications/namd/namd/" title="NAMD" class="md-nav__link">
+      NAMD
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../software/environment/environment/" title="environment" class="md-nav__link">
+      environment
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../software/tools/tools/" title="tools" class="md-nav__link">
+      tools
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Systems
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Systems
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../systems/cori/cori/" title="cori" class="md-nav__link">
+      cori
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../systems/edison/edison/" title="edison" class="md-nav__link">
+      edison
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../systems/slurm/slurm/" title="slurm" class="md-nav__link">
+      slurm
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../systems/storage/storage/" title="storage" class="md-nav__link">
+      storage
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../tutorials/getting-started/getting-started/" title="getting-started" class="md-nav__link">
+      getting-started
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cori-performance" title="Cori performance" class="md-nav__link">
+    Cori performance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-example" title="Basic example" class="md-nav__link">
+    Basic example
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compilation" title="Compilation" class="md-nav__link">
+    Compilation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-the-executable" title="Running the executable" class="md-nav__link">
+    Running the executable
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#some-source-code" title="Some source code" class="md-nav__link">
+    Some source code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#latex-support" title="LaTex support" class="md-nav__link">
+    LaTex support
+  </a>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="lorem">Lorem<a class="headerlink" href="#lorem" title="Permanent link">&para;</a></h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<h2 id="cori-performance">Cori performance<a class="headerlink" href="#cori-performance" title="Permanent link">&para;</a></h2>
+<p>A table</p>
+<table>
+<thead>
+<tr>
+<th>System Type</th>
+<th>Cray XC40</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Theoretical Peak Performance (System)</td>
+<td>31.4 PFlops</td>
+</tr>
+<tr>
+<td>Theoretical Peak Performance (Haswell nodes)</td>
+<td>2.3 PFlops</td>
+</tr>
+<tr>
+<td>Theoretical Peak Performance (Xeon Phi nodes)</td>
+<td>29.1 PFlops</td>
+</tr>
+</tbody>
+</table>
+<h2 id="basic-example">Basic example<a class="headerlink" href="#basic-example" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Include paths are specified relative to the base <code>docs</code> directory.</p>
+</div>
+<p>A useful code for checking thread and process affinity.</p>
+<div class="codehilite"><pre><span></span><span class="cp">#define _GNU_SOURCE</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sched.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;mpi.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;omp.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/* Borrowed from util-linux-2.13-pre7/schedutils/taskset.c */</span>
+<span class="k">static</span> <span class="kt">char</span> <span class="o">*</span><span class="nf">cpuset_to_cstr</span><span class="p">(</span><span class="kt">cpu_set_t</span> <span class="o">*</span><span class="n">mask</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">str</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">char</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="n">str</span><span class="p">;</span>
+  <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">entry_made</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">CPU_SETSIZE</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">CPU_ISSET</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">mask</span><span class="p">))</span> <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">run</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="n">entry_made</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="k">for</span> <span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">CPU_SETSIZE</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">CPU_ISSET</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">mask</span><span class="p">))</span> <span class="n">run</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">break</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">run</span><span class="p">)</span>
+        <span class="n">sprintf</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="s">&quot;%d,&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+      <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">run</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sprintf</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="s">&quot;%d,%d,&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">sprintf</span><span class="p">(</span><span class="n">ptr</span><span class="p">,</span> <span class="s">&quot;%d-%d,&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="n">run</span><span class="p">);</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="n">run</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">ptr</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="n">ptr</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">ptr</span> <span class="o">-=</span> <span class="n">entry_made</span><span class="p">;</span>
+  <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">return</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+  <span class="kt">int</span> <span class="n">rank</span><span class="p">,</span> <span class="kr">thread</span><span class="p">;</span>
+  <span class="kt">cpu_set_t</span> <span class="n">coremask</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">clbuf</span><span class="p">[</span><span class="mi">7</span> <span class="o">*</span> <span class="n">CPU_SETSIZE</span><span class="p">],</span> <span class="n">hnbuf</span><span class="p">[</span><span class="mi">64</span><span class="p">];</span>
+
+  <span class="n">MPI_Init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">argv</span><span class="p">);</span>
+  <span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">rank</span><span class="p">);</span>
+  <span class="n">memset</span><span class="p">(</span><span class="n">clbuf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">clbuf</span><span class="p">));</span>
+  <span class="n">memset</span><span class="p">(</span><span class="n">hnbuf</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">hnbuf</span><span class="p">));</span>
+  <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">gethostname</span><span class="p">(</span><span class="n">hnbuf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">hnbuf</span><span class="p">));</span>
+<span class="cp">#pragma omp parallel private(thread, coremask, clbuf)</span>
+  <span class="p">{</span>
+    <span class="kr">thread</span> <span class="o">=</span> <span class="n">omp_get_thread_num</span><span class="p">();</span>
+    <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">sched_getaffinity</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">coremask</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">coremask</span><span class="p">);</span>
+    <span class="n">cpuset_to_cstr</span><span class="p">(</span><span class="o">&amp;</span><span class="n">coremask</span><span class="p">,</span> <span class="n">clbuf</span><span class="p">);</span>
+    <span class="cp">#pragma omp barrier</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello from rank %d, thread %d, on %s. (core affinity = %s)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+       <span class="n">rank</span><span class="p">,</span> <span class="kr">thread</span><span class="p">,</span> <span class="n">hnbuf</span><span class="p">,</span> <span class="n">clbuf</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="n">MPI_Finalize</span><span class="p">();</span>
+  <span class="k">return</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="compilation">Compilation<a class="headerlink" href="#compilation" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="nv">TARGET</span> <span class="o">=</span> xthi
+<span class="nv">LIBS</span> <span class="o">=</span> 
+<span class="nv">CC</span> <span class="o">=</span> cc
+<span class="nv">CFLAGS</span> <span class="o">=</span> -g -Wall -qopenmp
+
+<span class="nf">.PHONY</span><span class="o">:</span> <span class="n">default</span> <span class="n">all</span> <span class="n">clean</span>
+
+<span class="nf">default</span><span class="o">:</span> <span class="k">$(</span><span class="nv">TARGET</span><span class="k">)</span>
+<span class="nf">all</span><span class="o">:</span> <span class="n">default</span>
+
+<span class="nv">OBJECTS</span> <span class="o">=</span> <span class="k">$(</span>patsubst %.c, %.o, <span class="k">$(</span>wildcard *.c<span class="k">))</span>
+<span class="nv">HEADERS</span> <span class="o">=</span> <span class="k">$(</span>wildcard *.h<span class="k">)</span>
+
+<span class="nf">%.o</span><span class="o">:</span> %.<span class="n">c</span> <span class="k">$(</span><span class="nv">HEADERS</span><span class="k">)</span>
+    <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> -c $&lt; -o <span class="nv">$@</span>
+
+<span class="nf">.PRECIOUS</span><span class="o">:</span> <span class="k">$(</span><span class="nv">TARGET</span><span class="k">)</span> <span class="k">$(</span><span class="nv">OBJECTS</span><span class="k">)</span>
+
+<span class="nf">$(TARGET)</span><span class="o">:</span> <span class="k">$(</span><span class="nv">OBJECTS</span><span class="k">)</span>
+    <span class="k">$(</span>CC<span class="k">)</span> <span class="k">$(</span>CFLAGS<span class="k">)</span> <span class="k">$(</span>OBJECTS<span class="k">)</span> -Wall <span class="k">$(</span>LIBS<span class="k">)</span> -o <span class="nv">$@</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+    -rm -f *.o
+    -rm -f <span class="k">$(</span>TARGET<span class="k">)</span>
+</pre></div>
+
+<h3 id="running-the-executable">Running the executable<a class="headerlink" href="#running-the-executable" title="Permanent link">&para;</a></h3>
+<p>Submit the script with the <code>sbatch</code> command:</p>
+<div class="codehilite"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -N 2</span>
+<span class="c1">#SBATCH -p debug</span>
+<span class="c1">#SBATCH -t 00:05:00</span>
+
+<span class="c1">#OpenMP settings:</span>
+<span class="nb">export</span> <span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">4</span>
+<span class="nb">export</span> <span class="nv">OMP_PLACES</span><span class="o">=</span>threads
+<span class="nb">export</span> <span class="nv">OMP_PROC_BIND</span><span class="o">=</span>spread
+
+<span class="c1">#run the application:</span>
+sbcast ./xthi /tmp/xthi
+srun -n <span class="m">12</span> -c <span class="m">8</span> --cpu_bind<span class="o">=</span>cores /tmp/xthi <span class="p">|</span> sort
+</pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>-c</code> and <code>--cpu_bind=</code> options for <code>srun</code> are <strong>required</strong> for hybrid jobs or jobs which do not utilize all physical cores </p>
+</div>
+<h2 id="some-source-code">Some source code<a class="headerlink" href="#some-source-code" title="Permanent link">&para;</a></h2>
+<p>Instrumented C code to measure AI</p>
+<div class="codehilite"><pre><span></span><span class="c1">// Code must be built with appropriate paths for VTune include file (ittnotify.h) and library (-littnotify)</span>
+<span class="cp">#include</span> <span class="cpf">&lt;ittnotify.h&gt;</span><span class="cp"></span>
+
+<span class="n">__SSC_MARK</span><span class="p">(</span><span class="mh">0x111</span><span class="p">);</span> <span class="c1">// start SDE tracing, note it uses 2 underscores</span>
+<span class="n">__itt_resume</span><span class="p">();</span> <span class="c1">// start VTune, again use 2 underscores</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">NTIMES</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+ <span class="cp">#pragma omp parallel for</span>
+ <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="n">STREAM_ARRAY_SIZE</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+ <span class="n">a</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">scalar</span><span class="o">*</span><span class="n">c</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="n">__itt_pause</span><span class="p">();</span> <span class="c1">// stop VTune</span>
+<span class="n">__SSC_MARK</span><span class="p">(</span><span class="mh">0x222</span><span class="p">);</span> <span class="c1">// stop SDE tracing</span>
+</pre></div>
+
+<h2 id="latex-support">LaTex support<a class="headerlink" href="#latex-support" title="Permanent link">&para;</a></h2>
+<span>\[
+\frac{n!}{k!(n-k)!} = \binom{n}{k}
+\]</span><p>from:</p>
+<div class="codehilite"><pre><span></span><span class="sb">$$</span><span class="nb"></span>
+<span class="nv">\frac</span><span class="nb">{n</span><span class="o">!</span><span class="nb">}{k</span><span class="o">!(</span><span class="nb">n</span><span class="o">-</span><span class="nb">k</span><span class="o">)!</span><span class="nb">} </span><span class="o">=</span><span class="nb"> </span><span class="nv">\binom</span><span class="nb">{n}{k}</span>
+<span class="s">$$</span>
+</pre></div>
+                
+                  
+                
+              
+              
+                
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+      
+      <a href="../demo/" title="Example" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+        </div>
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Previous
+            </span>
+            Example
+          </span>
+        </div>
+      </a>
+      
+      
+      <a href="../../data/analytics/analytics/" title="Analytics" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+        <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+          <span class="md-flex__ellipsis">
+            <span class="md-footer-nav__direction">
+              Next
+            </span>
+            Analytics
+          </span>
+        </div>
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+        </div>
+      </a>
+      
+    </nav>
+  </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        <div class="md-footer-copyright__highlight">
+	  <a href="https://www.lbl.gov/disclaimers/" title="Privacy and Security Notice">Privacy and Security Notice</a>
+        </div>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application-f3ab9e5ff8.js"></script>
+      
+      
+      <script>app.initialize({url:{base:"../.."}})</script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+    
+    
+      
+    
+  </body>
+</html>
