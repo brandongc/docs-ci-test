@@ -1,198 +1,198 @@
 {
     "docs": [
         {
-            "location": "/",
-            "text": "NERSC Technical Documentation\n\u00b6\n\n\n\n\nWarning\n\n\nUnder construction! Should not be considered an official source of any information.\n\n\n\n\nComplete guide to using NERSC systems, services and software.\n\n\nDemo\n\u00b6\n\n\nWhy not checkout the \ndemo\n?",
+            "location": "/", 
+            "text": "NERSC Technical Documentation\n\n\n\n\nWarning\n\n\nUnder construction! Should not be considered an official source of any information.\n\n\n\n\nComplete guide to using NERSC systems, services and software.\n\n\nDemo\n\n\nWhy not checkout the \ndemo\n?", 
             "title": "Home"
-        },
+        }, 
         {
-            "location": "/#nersc-technical-documentation",
-            "text": "Warning  Under construction! Should not be considered an official source of any information.   Complete guide to using NERSC systems, services and software.",
+            "location": "/#nersc-technical-documentation", 
+            "text": "Warning  Under construction! Should not be considered an official source of any information.   Complete guide to using NERSC systems, services and software.", 
             "title": "NERSC Technical Documentation"
-        },
+        }, 
         {
-            "location": "/#demo",
-            "text": "Why not checkout the  demo ?",
+            "location": "/#demo", 
+            "text": "Why not checkout the  demo ?", 
             "title": "Demo"
-        },
+        }, 
         {
-            "location": "/demo/demo/",
-            "text": "Lorem\n\u00b6\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n\nCori performance\n\u00b6\n\n\nA table\n\n\n\n\n\n\n\n\nSystem Type\n\n\nCray XC40\n\n\n\n\n\n\n\n\n\n\nTheoretical Peak Performance (System)\n\n\n31.4 PFlops\n\n\n\n\n\n\nTheoretical Peak Performance (Haswell nodes)\n\n\n2.3 PFlops\n\n\n\n\n\n\nTheoretical Peak Performance (Xeon Phi nodes)\n\n\n29.1 PFlops\n\n\n\n\n\n\n\n\nBasic example\n\u00b6\n\n\n\n\nWarning\n\n\nInclude paths are specified relative to the base \ndocs\n directory.\n\n\n\n\nA useful code for checking thread and process affinity.\n\n\n#define _GNU_SOURCE\n\n\n\n#include\n \n<stdio.h>\n\n\n#include\n \n<unistd.h>\n\n\n#include\n \n<string.h>\n\n\n#include\n \n<sched.h>\n\n\n#include\n \n<mpi.h>\n\n\n#include\n \n<omp.h>\n\n\n\n/* Borrowed from util-linux-2.13-pre7/schedutils/taskset.c */\n\n\nstatic\n \nchar\n \n*\ncpuset_to_cstr\n(\ncpu_set_t\n \n*\nmask\n,\n \nchar\n \n*\nstr\n)\n\n\n{\n\n  \nchar\n \n*\nptr\n \n=\n \nstr\n;\n\n  \nint\n \ni\n,\n \nj\n,\n \nentry_made\n \n=\n \n0\n;\n\n  \nfor\n \n(\ni\n \n=\n \n0\n;\n \ni\n \n<\n \nCPU_SETSIZE\n;\n \ni\n++\n)\n \n{\n\n    \nif\n \n(\nCPU_ISSET\n(\ni\n,\n \nmask\n))\n \n{\n\n      \nint\n \nrun\n \n=\n \n0\n;\n\n      \nentry_made\n \n=\n \n1\n;\n\n      \nfor\n \n(\nj\n \n=\n \ni\n \n+\n \n1\n;\n \nj\n \n<\n \nCPU_SETSIZE\n;\n \nj\n++\n)\n \n{\n\n        \nif\n \n(\nCPU_ISSET\n(\nj\n,\n \nmask\n))\n \nrun\n++\n;\n\n        \nelse\n \nbreak\n;\n\n      \n}\n\n      \nif\n \n(\n!\nrun\n)\n\n        \nsprintf\n(\nptr\n,\n \n\"%d,\"\n,\n \ni\n);\n\n      \nelse\n \nif\n \n(\nrun\n \n==\n \n1\n)\n \n{\n\n        \nsprintf\n(\nptr\n,\n \n\"%d,%d,\"\n,\n \ni\n,\n \ni\n \n+\n \n1\n);\n\n        \ni\n++\n;\n\n      \n}\n \nelse\n \n{\n\n        \nsprintf\n(\nptr\n,\n \n\"%d-%d,\"\n,\n \ni\n,\n \ni\n \n+\n \nrun\n);\n\n        \ni\n \n+=\n \nrun\n;\n\n      \n}\n\n      \nwhile\n \n(\n*\nptr\n \n!=\n \n0\n)\n \nptr\n++\n;\n\n    \n}\n\n  \n}\n\n  \nptr\n \n-=\n \nentry_made\n;\n\n  \n*\nptr\n \n=\n \n0\n;\n\n  \nreturn\n(\nstr\n);\n\n\n}\n\n\n\nint\n \nmain\n(\nint\n \nargc\n,\n \nchar\n \n*\nargv\n[])\n\n\n{\n\n  \nint\n \nrank\n,\n \nthread\n;\n\n  \ncpu_set_t\n \ncoremask\n;\n\n  \nchar\n \nclbuf\n[\n7\n \n*\n \nCPU_SETSIZE\n],\n \nhnbuf\n[\n64\n];\n\n\n  \nMPI_Init\n(\n&\nargc\n,\n \n&\nargv\n);\n\n  \nMPI_Comm_rank\n(\nMPI_COMM_WORLD\n,\n \n&\nrank\n);\n\n  \nmemset\n(\nclbuf\n,\n \n0\n,\n \nsizeof\n(\nclbuf\n));\n\n  \nmemset\n(\nhnbuf\n,\n \n0\n,\n \nsizeof\n(\nhnbuf\n));\n\n  \n(\nvoid\n)\ngethostname\n(\nhnbuf\n,\n \nsizeof\n(\nhnbuf\n));\n\n\n#pragma omp parallel private(thread, coremask, clbuf)\n\n  \n{\n\n    \nthread\n \n=\n \nomp_get_thread_num\n();\n\n    \n(\nvoid\n)\nsched_getaffinity\n(\n0\n,\n \nsizeof\n(\ncoremask\n),\n \n&\ncoremask\n);\n\n    \ncpuset_to_cstr\n(\n&\ncoremask\n,\n \nclbuf\n);\n\n    \n#pragma omp barrier\n\n    \nprintf\n(\n\"Hello from rank %d, thread %d, on %s. (core affinity = %s)\n\\n\n\"\n,\n\n       \nrank\n,\n \nthread\n,\n \nhnbuf\n,\n \nclbuf\n);\n\n  \n}\n\n  \nMPI_Finalize\n();\n\n  \nreturn\n(\n0\n);\n\n\n}\n\n\n\n\n\nCompilation\n\u00b6\n\n\nTARGET\n \n=\n xthi\n\nLIBS\n \n=\n \n\nCC\n \n=\n cc\n\nCFLAGS\n \n=\n -g -Wall -qopenmp\n\n\n.PHONY\n:\n \ndefault\n \nall\n \nclean\n\n\n\ndefault\n:\n \n$(\nTARGET\n)\n\n\nall\n:\n \ndefault\n\n\n\nOBJECTS\n \n=\n \n$(\npatsubst %.c, %.o, \n$(\nwildcard *.c\n))\n\n\nHEADERS\n \n=\n \n$(\nwildcard *.h\n)\n\n\n\n%.o\n:\n %.\nc\n \n$(\nHEADERS\n)\n\n    \n$(\nCC\n)\n \n$(\nCFLAGS\n)\n -c $< -o \n$@\n\n\n\n.PRECIOUS\n:\n \n$(\nTARGET\n)\n \n$(\nOBJECTS\n)\n\n\n\n$(TARGET)\n:\n \n$(\nOBJECTS\n)\n\n    \n$(\nCC\n)\n \n$(\nCFLAGS\n)\n \n$(\nOBJECTS\n)\n -Wall \n$(\nLIBS\n)\n -o \n$@\n\n\n\nclean\n:\n\n    -rm -f *.o\n    -rm -f \n$(\nTARGET\n)\n\n\n\n\n\nRunning the executable\n\u00b6\n\n\nSubmit the script with the \nsbatch\n command:\n\n\n#!/bin/bash\n\n\n#SBATCH -N 2\n\n\n#SBATCH -p debug\n\n\n#SBATCH -t 00:05:00\n\n\n\n#OpenMP settings:\n\n\nexport\n \nOMP_NUM_THREADS\n=\n4\n\n\nexport\n \nOMP_PLACES\n=\nthreads\n\nexport\n \nOMP_PROC_BIND\n=\nspread\n\n\n#run the application:\n\nsbcast ./xthi /tmp/xthi\nsrun -n \n12\n -c \n8\n --cpu_bind\n=\ncores /tmp/xthi \n|\n sort\n\n\n\n\n\n\nWarning\n\n\nThe \n-c\n and \n--cpu_bind=\n options for \nsrun\n are \nrequired\n for hybrid jobs or jobs which do not utilize all physical cores \n\n\n\n\nSome source code\n\u00b6\n\n\nInstrumented C code to measure AI\n\n\n// Code must be built with appropriate paths for VTune include file (ittnotify.h) and library (-littnotify)\n\n\n#include\n \n<ittnotify.h>\n\n\n\n__SSC_MARK\n(\n0x111\n);\n \n// start SDE tracing, note it uses 2 underscores\n\n\n__itt_resume\n();\n \n// start VTune, again use 2 underscores\n\n\n\nfor\n \n(\nk\n=\n0\n;\n \nk\n<\nNTIMES\n;\n \nk\n++\n)\n \n{\n\n \n#pragma omp parallel for\n\n \nfor\n \n(\nj\n=\n0\n;\n \nj\n<\nSTREAM_ARRAY_SIZE\n;\n \nj\n++\n)\n\n \na\n[\nj\n]\n \n=\n \nb\n[\nj\n]\n+\nscalar\n*\nc\n[\nj\n];\n\n\n}\n\n\n\n__itt_pause\n();\n \n// stop VTune\n\n\n__SSC_MARK\n(\n0x222\n);\n \n// stop SDE tracing\n\n\n\n\n\nLaTex support\n\u00b6\n\n\n\\[\n\\frac{n!}{k!(n-k)!} = \\binom{n}{k}\n\\]\nfrom:\n\n\n$$\n\n\n\\frac\n{n\n!\n}{k\n!(\nn\n-\nk\n)!\n} \n=\n \n\\binom\n{n}{k}\n\n\n$$",
+            "location": "/demo/demo/", 
+            "text": "Lorem\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n\nCori performance\n\n\nA table\n\n\n\n\n\n\n\n\nSystem Type\n\n\nCray XC40\n\n\n\n\n\n\n\n\n\n\nTheoretical Peak Performance (System)\n\n\n31.4 PFlops\n\n\n\n\n\n\nTheoretical Peak Performance (Haswell nodes)\n\n\n2.3 PFlops\n\n\n\n\n\n\nTheoretical Peak Performance (Xeon Phi nodes)\n\n\n29.1 PFlops\n\n\n\n\n\n\n\n\nBasic example\n\n\n\n\nWarning\n\n\nInclude paths are specified relative to the base \ndocs\n directory.\n\n\n\n\nA useful code for checking thread and process affinity.\n\n\n#define _GNU_SOURCE\n\n\n\n#include\n \nstdio.h\n\n\n#include\n \nunistd.h\n\n\n#include\n \nstring.h\n\n\n#include\n \nsched.h\n\n\n#include\n \nmpi.h\n\n\n#include\n \nomp.h\n\n\n\n/* Borrowed from util-linux-2.13-pre7/schedutils/taskset.c */\n\n\nstatic\n \nchar\n \n*\ncpuset_to_cstr\n(\ncpu_set_t\n \n*\nmask\n,\n \nchar\n \n*\nstr\n)\n\n\n{\n\n  \nchar\n \n*\nptr\n \n=\n \nstr\n;\n\n  \nint\n \ni\n,\n \nj\n,\n \nentry_made\n \n=\n \n0\n;\n\n  \nfor\n \n(\ni\n \n=\n \n0\n;\n \ni\n \n \nCPU_SETSIZE\n;\n \ni\n++\n)\n \n{\n\n    \nif\n \n(\nCPU_ISSET\n(\ni\n,\n \nmask\n))\n \n{\n\n      \nint\n \nrun\n \n=\n \n0\n;\n\n      \nentry_made\n \n=\n \n1\n;\n\n      \nfor\n \n(\nj\n \n=\n \ni\n \n+\n \n1\n;\n \nj\n \n \nCPU_SETSIZE\n;\n \nj\n++\n)\n \n{\n\n        \nif\n \n(\nCPU_ISSET\n(\nj\n,\n \nmask\n))\n \nrun\n++\n;\n\n        \nelse\n \nbreak\n;\n\n      \n}\n\n      \nif\n \n(\n!\nrun\n)\n\n        \nsprintf\n(\nptr\n,\n \n%d,\n,\n \ni\n);\n\n      \nelse\n \nif\n \n(\nrun\n \n==\n \n1\n)\n \n{\n\n        \nsprintf\n(\nptr\n,\n \n%d,%d,\n,\n \ni\n,\n \ni\n \n+\n \n1\n);\n\n        \ni\n++\n;\n\n      \n}\n \nelse\n \n{\n\n        \nsprintf\n(\nptr\n,\n \n%d-%d,\n,\n \ni\n,\n \ni\n \n+\n \nrun\n);\n\n        \ni\n \n+=\n \nrun\n;\n\n      \n}\n\n      \nwhile\n \n(\n*\nptr\n \n!=\n \n0\n)\n \nptr\n++\n;\n\n    \n}\n\n  \n}\n\n  \nptr\n \n-=\n \nentry_made\n;\n\n  \n*\nptr\n \n=\n \n0\n;\n\n  \nreturn\n(\nstr\n);\n\n\n}\n\n\n\nint\n \nmain\n(\nint\n \nargc\n,\n \nchar\n \n*\nargv\n[])\n\n\n{\n\n  \nint\n \nrank\n,\n \nthread\n;\n\n  \ncpu_set_t\n \ncoremask\n;\n\n  \nchar\n \nclbuf\n[\n7\n \n*\n \nCPU_SETSIZE\n],\n \nhnbuf\n[\n64\n];\n\n\n  \nMPI_Init\n(\nargc\n,\n \nargv\n);\n\n  \nMPI_Comm_rank\n(\nMPI_COMM_WORLD\n,\n \nrank\n);\n\n  \nmemset\n(\nclbuf\n,\n \n0\n,\n \nsizeof\n(\nclbuf\n));\n\n  \nmemset\n(\nhnbuf\n,\n \n0\n,\n \nsizeof\n(\nhnbuf\n));\n\n  \n(\nvoid\n)\ngethostname\n(\nhnbuf\n,\n \nsizeof\n(\nhnbuf\n));\n\n\n#pragma omp parallel private(thread, coremask, clbuf)\n\n  \n{\n\n    \nthread\n \n=\n \nomp_get_thread_num\n();\n\n    \n(\nvoid\n)\nsched_getaffinity\n(\n0\n,\n \nsizeof\n(\ncoremask\n),\n \ncoremask\n);\n\n    \ncpuset_to_cstr\n(\ncoremask\n,\n \nclbuf\n);\n\n    \n#pragma omp barrier\n\n    \nprintf\n(\nHello from rank %d, thread %d, on %s. (core affinity = %s)\n\\n\n,\n\n       \nrank\n,\n \nthread\n,\n \nhnbuf\n,\n \nclbuf\n);\n\n  \n}\n\n  \nMPI_Finalize\n();\n\n  \nreturn\n(\n0\n);\n\n\n}\n\n\n\n\n\nCompilation\n\n\nTARGET\n \n=\n xthi\n\nLIBS\n \n=\n \n\nCC\n \n=\n cc\n\nCFLAGS\n \n=\n -g -Wall -qopenmp\n\n\n.PHONY\n:\n \ndefault\n \nall\n \nclean\n\n\n\ndefault\n:\n \n$(\nTARGET\n)\n\n\nall\n:\n \ndefault\n\n\n\nOBJECTS\n \n=\n \n$(\npatsubst %.c, %.o, \n$(\nwildcard *.c\n))\n\n\nHEADERS\n \n=\n \n$(\nwildcard *.h\n)\n\n\n\n%.o\n:\n %.\nc\n \n$(\nHEADERS\n)\n\n    \n$(\nCC\n)\n \n$(\nCFLAGS\n)\n -c $\n -o \n$@\n\n\n\n.PRECIOUS\n:\n \n$(\nTARGET\n)\n \n$(\nOBJECTS\n)\n\n\n\n$(TARGET)\n:\n \n$(\nOBJECTS\n)\n\n    \n$(\nCC\n)\n \n$(\nCFLAGS\n)\n \n$(\nOBJECTS\n)\n -Wall \n$(\nLIBS\n)\n -o \n$@\n\n\n\nclean\n:\n\n    -rm -f *.o\n    -rm -f \n$(\nTARGET\n)\n\n\n\n\n\nRunning the executable\n\n\nSubmit the script with the \nsbatch\n command:\n\n\n#!/bin/bash\n\n\n#SBATCH -N 2\n\n\n#SBATCH -p debug\n\n\n#SBATCH -t 00:05:00\n\n\n\n#OpenMP settings:\n\n\nexport\n \nOMP_NUM_THREADS\n=\n4\n\n\nexport\n \nOMP_PLACES\n=\nthreads\n\nexport\n \nOMP_PROC_BIND\n=\nspread\n\n\n#run the application:\n\nsbcast ./xthi /tmp/xthi\nsrun -n \n12\n -c \n8\n --cpu_bind\n=\ncores /tmp/xthi \n|\n sort\n\n\n\n\n\n\nWarning\n\n\nThe \n-c\n and \n--cpu_bind=\n options for \nsrun\n are \nrequired\n for hybrid jobs or jobs which do not utilize all physical cores \n\n\n\n\nSome source code\n\n\nInstrumented C code to measure AI\n\n\n// Code must be built with appropriate paths for VTune include file (ittnotify.h) and library (-littnotify)\n\n\n#include\n \nittnotify.h\n\n\n\n__SSC_MARK\n(\n0x111\n);\n \n// start SDE tracing, note it uses 2 underscores\n\n\n__itt_resume\n();\n \n// start VTune, again use 2 underscores\n\n\n\nfor\n \n(\nk\n=\n0\n;\n \nk\nNTIMES\n;\n \nk\n++\n)\n \n{\n\n \n#pragma omp parallel for\n\n \nfor\n \n(\nj\n=\n0\n;\n \nj\nSTREAM_ARRAY_SIZE\n;\n \nj\n++\n)\n\n \na\n[\nj\n]\n \n=\n \nb\n[\nj\n]\n+\nscalar\n*\nc\n[\nj\n];\n\n\n}\n\n\n\n__itt_pause\n();\n \n// stop VTune\n\n\n__SSC_MARK\n(\n0x222\n);\n \n// stop SDE tracing\n\n\n\n\n\nLaTex support\n\n\n\\[\n\\frac{n!}{k!(n-k)!} = \\binom{n}{k}\n\\]\nfrom:\n\n\n$$\n\n\n\\frac\n{n\n!\n}{k\n!(\nn\n-\nk\n)!\n} \n=\n \n\\binom\n{n}{k}\n\n\n$$", 
             "title": "Example"
-        },
+        }, 
         {
-            "location": "/demo/demo/#lorem",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "location": "/demo/demo/#lorem", 
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
             "title": "Lorem"
-        },
+        }, 
         {
-            "location": "/demo/demo/#cori-performance",
-            "text": "A table     System Type  Cray XC40      Theoretical Peak Performance (System)  31.4 PFlops    Theoretical Peak Performance (Haswell nodes)  2.3 PFlops    Theoretical Peak Performance (Xeon Phi nodes)  29.1 PFlops",
+            "location": "/demo/demo/#cori-performance", 
+            "text": "A table     System Type  Cray XC40      Theoretical Peak Performance (System)  31.4 PFlops    Theoretical Peak Performance (Haswell nodes)  2.3 PFlops    Theoretical Peak Performance (Xeon Phi nodes)  29.1 PFlops", 
             "title": "Cori performance"
-        },
+        }, 
         {
-            "location": "/demo/demo/#basic-example",
-            "text": "Warning  Include paths are specified relative to the base  docs  directory.   A useful code for checking thread and process affinity.  #define _GNU_SOURCE  #include   <stdio.h>  #include   <unistd.h>  #include   <string.h>  #include   <sched.h>  #include   <mpi.h>  #include   <omp.h>  /* Borrowed from util-linux-2.13-pre7/schedutils/taskset.c */  static   char   * cpuset_to_cstr ( cpu_set_t   * mask ,   char   * str )  { \n   char   * ptr   =   str ; \n   int   i ,   j ,   entry_made   =   0 ; \n   for   ( i   =   0 ;   i   <   CPU_SETSIZE ;   i ++ )   { \n     if   ( CPU_ISSET ( i ,   mask ))   { \n       int   run   =   0 ; \n       entry_made   =   1 ; \n       for   ( j   =   i   +   1 ;   j   <   CPU_SETSIZE ;   j ++ )   { \n         if   ( CPU_ISSET ( j ,   mask ))   run ++ ; \n         else   break ; \n       } \n       if   ( ! run ) \n         sprintf ( ptr ,   \"%d,\" ,   i ); \n       else   if   ( run   ==   1 )   { \n         sprintf ( ptr ,   \"%d,%d,\" ,   i ,   i   +   1 ); \n         i ++ ; \n       }   else   { \n         sprintf ( ptr ,   \"%d-%d,\" ,   i ,   i   +   run ); \n         i   +=   run ; \n       } \n       while   ( * ptr   !=   0 )   ptr ++ ; \n     } \n   } \n   ptr   -=   entry_made ; \n   * ptr   =   0 ; \n   return ( str );  }  int   main ( int   argc ,   char   * argv [])  { \n   int   rank ,   thread ; \n   cpu_set_t   coremask ; \n   char   clbuf [ 7   *   CPU_SETSIZE ],   hnbuf [ 64 ]; \n\n   MPI_Init ( & argc ,   & argv ); \n   MPI_Comm_rank ( MPI_COMM_WORLD ,   & rank ); \n   memset ( clbuf ,   0 ,   sizeof ( clbuf )); \n   memset ( hnbuf ,   0 ,   sizeof ( hnbuf )); \n   ( void ) gethostname ( hnbuf ,   sizeof ( hnbuf ));  #pragma omp parallel private(thread, coremask, clbuf) \n   { \n     thread   =   omp_get_thread_num (); \n     ( void ) sched_getaffinity ( 0 ,   sizeof ( coremask ),   & coremask ); \n     cpuset_to_cstr ( & coremask ,   clbuf ); \n     #pragma omp barrier \n     printf ( \"Hello from rank %d, thread %d, on %s. (core affinity = %s) \\n \" , \n        rank ,   thread ,   hnbuf ,   clbuf ); \n   } \n   MPI_Finalize (); \n   return ( 0 );  }",
+            "location": "/demo/demo/#basic-example", 
+            "text": "Warning  Include paths are specified relative to the base  docs  directory.   A useful code for checking thread and process affinity.  #define _GNU_SOURCE  #include   stdio.h  #include   unistd.h  #include   string.h  #include   sched.h  #include   mpi.h  #include   omp.h  /* Borrowed from util-linux-2.13-pre7/schedutils/taskset.c */  static   char   * cpuset_to_cstr ( cpu_set_t   * mask ,   char   * str )  { \n   char   * ptr   =   str ; \n   int   i ,   j ,   entry_made   =   0 ; \n   for   ( i   =   0 ;   i     CPU_SETSIZE ;   i ++ )   { \n     if   ( CPU_ISSET ( i ,   mask ))   { \n       int   run   =   0 ; \n       entry_made   =   1 ; \n       for   ( j   =   i   +   1 ;   j     CPU_SETSIZE ;   j ++ )   { \n         if   ( CPU_ISSET ( j ,   mask ))   run ++ ; \n         else   break ; \n       } \n       if   ( ! run ) \n         sprintf ( ptr ,   %d, ,   i ); \n       else   if   ( run   ==   1 )   { \n         sprintf ( ptr ,   %d,%d, ,   i ,   i   +   1 ); \n         i ++ ; \n       }   else   { \n         sprintf ( ptr ,   %d-%d, ,   i ,   i   +   run ); \n         i   +=   run ; \n       } \n       while   ( * ptr   !=   0 )   ptr ++ ; \n     } \n   } \n   ptr   -=   entry_made ; \n   * ptr   =   0 ; \n   return ( str );  }  int   main ( int   argc ,   char   * argv [])  { \n   int   rank ,   thread ; \n   cpu_set_t   coremask ; \n   char   clbuf [ 7   *   CPU_SETSIZE ],   hnbuf [ 64 ]; \n\n   MPI_Init ( argc ,   argv ); \n   MPI_Comm_rank ( MPI_COMM_WORLD ,   rank ); \n   memset ( clbuf ,   0 ,   sizeof ( clbuf )); \n   memset ( hnbuf ,   0 ,   sizeof ( hnbuf )); \n   ( void ) gethostname ( hnbuf ,   sizeof ( hnbuf ));  #pragma omp parallel private(thread, coremask, clbuf) \n   { \n     thread   =   omp_get_thread_num (); \n     ( void ) sched_getaffinity ( 0 ,   sizeof ( coremask ),   coremask ); \n     cpuset_to_cstr ( coremask ,   clbuf ); \n     #pragma omp barrier \n     printf ( Hello from rank %d, thread %d, on %s. (core affinity = %s) \\n , \n        rank ,   thread ,   hnbuf ,   clbuf ); \n   } \n   MPI_Finalize (); \n   return ( 0 );  }", 
             "title": "Basic example"
-        },
+        }, 
         {
-            "location": "/demo/demo/#compilation",
-            "text": "TARGET   =  xthi LIBS   =   CC   =  cc CFLAGS   =  -g -Wall -qopenmp .PHONY :   default   all   clean  default :   $( TARGET )  all :   default  OBJECTS   =   $( patsubst %.c, %.o,  $( wildcard *.c ))  HEADERS   =   $( wildcard *.h )  %.o :  %. c   $( HEADERS ) \n     $( CC )   $( CFLAGS )  -c $< -o  $@  .PRECIOUS :   $( TARGET )   $( OBJECTS )  $(TARGET) :   $( OBJECTS ) \n     $( CC )   $( CFLAGS )   $( OBJECTS )  -Wall  $( LIBS )  -o  $@  clean : \n    -rm -f *.o\n    -rm -f  $( TARGET )",
+            "location": "/demo/demo/#compilation", 
+            "text": "TARGET   =  xthi LIBS   =   CC   =  cc CFLAGS   =  -g -Wall -qopenmp .PHONY :   default   all   clean  default :   $( TARGET )  all :   default  OBJECTS   =   $( patsubst %.c, %.o,  $( wildcard *.c ))  HEADERS   =   $( wildcard *.h )  %.o :  %. c   $( HEADERS ) \n     $( CC )   $( CFLAGS )  -c $  -o  $@  .PRECIOUS :   $( TARGET )   $( OBJECTS )  $(TARGET) :   $( OBJECTS ) \n     $( CC )   $( CFLAGS )   $( OBJECTS )  -Wall  $( LIBS )  -o  $@  clean : \n    -rm -f *.o\n    -rm -f  $( TARGET )", 
             "title": "Compilation"
-        },
+        }, 
         {
-            "location": "/demo/demo/#running-the-executable",
-            "text": "Submit the script with the  sbatch  command:  #!/bin/bash  #SBATCH -N 2  #SBATCH -p debug  #SBATCH -t 00:05:00  #OpenMP settings:  export   OMP_NUM_THREADS = 4  export   OMP_PLACES = threads export   OMP_PROC_BIND = spread #run the application: \nsbcast ./xthi /tmp/xthi\nsrun -n  12  -c  8  --cpu_bind = cores /tmp/xthi  |  sort   Warning  The  -c  and  --cpu_bind=  options for  srun  are  required  for hybrid jobs or jobs which do not utilize all physical cores",
+            "location": "/demo/demo/#running-the-executable", 
+            "text": "Submit the script with the  sbatch  command:  #!/bin/bash  #SBATCH -N 2  #SBATCH -p debug  #SBATCH -t 00:05:00  #OpenMP settings:  export   OMP_NUM_THREADS = 4  export   OMP_PLACES = threads export   OMP_PROC_BIND = spread #run the application: \nsbcast ./xthi /tmp/xthi\nsrun -n  12  -c  8  --cpu_bind = cores /tmp/xthi  |  sort   Warning  The  -c  and  --cpu_bind=  options for  srun  are  required  for hybrid jobs or jobs which do not utilize all physical cores", 
             "title": "Running the executable"
-        },
+        }, 
         {
-            "location": "/demo/demo/#some-source-code",
-            "text": "Instrumented C code to measure AI  // Code must be built with appropriate paths for VTune include file (ittnotify.h) and library (-littnotify)  #include   <ittnotify.h>  __SSC_MARK ( 0x111 );   // start SDE tracing, note it uses 2 underscores  __itt_resume ();   // start VTune, again use 2 underscores  for   ( k = 0 ;   k < NTIMES ;   k ++ )   { \n  #pragma omp parallel for \n  for   ( j = 0 ;   j < STREAM_ARRAY_SIZE ;   j ++ ) \n  a [ j ]   =   b [ j ] + scalar * c [ j ];  }  __itt_pause ();   // stop VTune  __SSC_MARK ( 0x222 );   // stop SDE tracing",
+            "location": "/demo/demo/#some-source-code", 
+            "text": "Instrumented C code to measure AI  // Code must be built with appropriate paths for VTune include file (ittnotify.h) and library (-littnotify)  #include   ittnotify.h  __SSC_MARK ( 0x111 );   // start SDE tracing, note it uses 2 underscores  __itt_resume ();   // start VTune, again use 2 underscores  for   ( k = 0 ;   k NTIMES ;   k ++ )   { \n  #pragma omp parallel for \n  for   ( j = 0 ;   j STREAM_ARRAY_SIZE ;   j ++ ) \n  a [ j ]   =   b [ j ] + scalar * c [ j ];  }  __itt_pause ();   // stop VTune  __SSC_MARK ( 0x222 );   // stop SDE tracing", 
             "title": "Some source code"
-        },
+        }, 
         {
-            "location": "/demo/demo/#latex-support",
-            "text": "\\[\n\\frac{n!}{k!(n-k)!} = \\binom{n}{k}\n\\] from:  $$  \\frac {n ! }{k !( n - k )! }  =   \\binom {n}{k}  $$",
+            "location": "/demo/demo/#latex-support", 
+            "text": "\\[\n\\frac{n!}{k!(n-k)!} = \\binom{n}{k}\n\\] from:  $$  \\frac {n ! }{k !( n - k )! }  =   \\binom {n}{k}  $$", 
             "title": "LaTex support"
-        },
+        }, 
         {
-            "location": "/demo/demo2/",
-            "text": "Lorem\n\u00b6\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n\nCori performance\n\u00b6\n\n\nA table\n\n\n\n\n\n\n\n\nSystem Type\n\n\nCray XC40\n\n\n\n\n\n\n\n\n\n\nTheoretical Peak Performance (System)\n\n\n31.4 PFlops\n\n\n\n\n\n\nTheoretical Peak Performance (Haswell nodes)\n\n\n2.3 PFlops\n\n\n\n\n\n\nTheoretical Peak Performance (Xeon Phi nodes)\n\n\n29.1 PFlops\n\n\n\n\n\n\n\n\nBasic example\n\u00b6\n\n\n\n\nWarning\n\n\nInclude paths are specified relative to the base \ndocs\n directory.\n\n\n\n\nA useful code for checking thread and process affinity.\n\n\n#define _GNU_SOURCE\n\n\n\n#include\n \n<stdio.h>\n\n\n#include\n \n<unistd.h>\n\n\n#include\n \n<string.h>\n\n\n#include\n \n<sched.h>\n\n\n#include\n \n<mpi.h>\n\n\n#include\n \n<omp.h>\n\n\n\n/* Borrowed from util-linux-2.13-pre7/schedutils/taskset.c */\n\n\nstatic\n \nchar\n \n*\ncpuset_to_cstr\n(\ncpu_set_t\n \n*\nmask\n,\n \nchar\n \n*\nstr\n)\n\n\n{\n\n  \nchar\n \n*\nptr\n \n=\n \nstr\n;\n\n  \nint\n \ni\n,\n \nj\n,\n \nentry_made\n \n=\n \n0\n;\n\n  \nfor\n \n(\ni\n \n=\n \n0\n;\n \ni\n \n<\n \nCPU_SETSIZE\n;\n \ni\n++\n)\n \n{\n\n    \nif\n \n(\nCPU_ISSET\n(\ni\n,\n \nmask\n))\n \n{\n\n      \nint\n \nrun\n \n=\n \n0\n;\n\n      \nentry_made\n \n=\n \n1\n;\n\n      \nfor\n \n(\nj\n \n=\n \ni\n \n+\n \n1\n;\n \nj\n \n<\n \nCPU_SETSIZE\n;\n \nj\n++\n)\n \n{\n\n        \nif\n \n(\nCPU_ISSET\n(\nj\n,\n \nmask\n))\n \nrun\n++\n;\n\n        \nelse\n \nbreak\n;\n\n      \n}\n\n      \nif\n \n(\n!\nrun\n)\n\n        \nsprintf\n(\nptr\n,\n \n\"%d,\"\n,\n \ni\n);\n\n      \nelse\n \nif\n \n(\nrun\n \n==\n \n1\n)\n \n{\n\n        \nsprintf\n(\nptr\n,\n \n\"%d,%d,\"\n,\n \ni\n,\n \ni\n \n+\n \n1\n);\n\n        \ni\n++\n;\n\n      \n}\n \nelse\n \n{\n\n        \nsprintf\n(\nptr\n,\n \n\"%d-%d,\"\n,\n \ni\n,\n \ni\n \n+\n \nrun\n);\n\n        \ni\n \n+=\n \nrun\n;\n\n      \n}\n\n      \nwhile\n \n(\n*\nptr\n \n!=\n \n0\n)\n \nptr\n++\n;\n\n    \n}\n\n  \n}\n\n  \nptr\n \n-=\n \nentry_made\n;\n\n  \n*\nptr\n \n=\n \n0\n;\n\n  \nreturn\n(\nstr\n);\n\n\n}\n\n\n\nint\n \nmain\n(\nint\n \nargc\n,\n \nchar\n \n*\nargv\n[])\n\n\n{\n\n  \nint\n \nrank\n,\n \nthread\n;\n\n  \ncpu_set_t\n \ncoremask\n;\n\n  \nchar\n \nclbuf\n[\n7\n \n*\n \nCPU_SETSIZE\n],\n \nhnbuf\n[\n64\n];\n\n\n  \nMPI_Init\n(\n&\nargc\n,\n \n&\nargv\n);\n\n  \nMPI_Comm_rank\n(\nMPI_COMM_WORLD\n,\n \n&\nrank\n);\n\n  \nmemset\n(\nclbuf\n,\n \n0\n,\n \nsizeof\n(\nclbuf\n));\n\n  \nmemset\n(\nhnbuf\n,\n \n0\n,\n \nsizeof\n(\nhnbuf\n));\n\n  \n(\nvoid\n)\ngethostname\n(\nhnbuf\n,\n \nsizeof\n(\nhnbuf\n));\n\n\n#pragma omp parallel private(thread, coremask, clbuf)\n\n  \n{\n\n    \nthread\n \n=\n \nomp_get_thread_num\n();\n\n    \n(\nvoid\n)\nsched_getaffinity\n(\n0\n,\n \nsizeof\n(\ncoremask\n),\n \n&\ncoremask\n);\n\n    \ncpuset_to_cstr\n(\n&\ncoremask\n,\n \nclbuf\n);\n\n    \n#pragma omp barrier\n\n    \nprintf\n(\n\"Hello from rank %d, thread %d, on %s. (core affinity = %s)\n\\n\n\"\n,\n\n       \nrank\n,\n \nthread\n,\n \nhnbuf\n,\n \nclbuf\n);\n\n  \n}\n\n  \nMPI_Finalize\n();\n\n  \nreturn\n(\n0\n);\n\n\n}\n\n\n\n\n\nCompilation\n\u00b6\n\n\nTARGET\n \n=\n xthi\n\nLIBS\n \n=\n \n\nCC\n \n=\n cc\n\nCFLAGS\n \n=\n -g -Wall -qopenmp\n\n\n.PHONY\n:\n \ndefault\n \nall\n \nclean\n\n\n\ndefault\n:\n \n$(\nTARGET\n)\n\n\nall\n:\n \ndefault\n\n\n\nOBJECTS\n \n=\n \n$(\npatsubst %.c, %.o, \n$(\nwildcard *.c\n))\n\n\nHEADERS\n \n=\n \n$(\nwildcard *.h\n)\n\n\n\n%.o\n:\n %.\nc\n \n$(\nHEADERS\n)\n\n    \n$(\nCC\n)\n \n$(\nCFLAGS\n)\n -c $< -o \n$@\n\n\n\n.PRECIOUS\n:\n \n$(\nTARGET\n)\n \n$(\nOBJECTS\n)\n\n\n\n$(TARGET)\n:\n \n$(\nOBJECTS\n)\n\n    \n$(\nCC\n)\n \n$(\nCFLAGS\n)\n \n$(\nOBJECTS\n)\n -Wall \n$(\nLIBS\n)\n -o \n$@\n\n\n\nclean\n:\n\n    -rm -f *.o\n    -rm -f \n$(\nTARGET\n)\n\n\n\n\n\nRunning the executable\n\u00b6\n\n\nSubmit the script with the \nsbatch\n command:\n\n\n#!/bin/bash\n\n\n#SBATCH -N 2\n\n\n#SBATCH -p debug\n\n\n#SBATCH -t 00:05:00\n\n\n\n#OpenMP settings:\n\n\nexport\n \nOMP_NUM_THREADS\n=\n4\n\n\nexport\n \nOMP_PLACES\n=\nthreads\n\nexport\n \nOMP_PROC_BIND\n=\nspread\n\n\n#run the application:\n\nsbcast ./xthi /tmp/xthi\nsrun -n \n12\n -c \n8\n --cpu_bind\n=\ncores /tmp/xthi \n|\n sort\n\n\n\n\n\n\nWarning\n\n\nThe \n-c\n and \n--cpu_bind=\n options for \nsrun\n are \nrequired\n for hybrid jobs or jobs which do not utilize all physical cores \n\n\n\n\nSome source code\n\u00b6\n\n\nInstrumented C code to measure AI\n\n\n// Code must be built with appropriate paths for VTune include file (ittnotify.h) and library (-littnotify)\n\n\n#include\n \n<ittnotify.h>\n\n\n\n__SSC_MARK\n(\n0x111\n);\n \n// start SDE tracing, note it uses 2 underscores\n\n\n__itt_resume\n();\n \n// start VTune, again use 2 underscores\n\n\n\nfor\n \n(\nk\n=\n0\n;\n \nk\n<\nNTIMES\n;\n \nk\n++\n)\n \n{\n\n \n#pragma omp parallel for\n\n \nfor\n \n(\nj\n=\n0\n;\n \nj\n<\nSTREAM_ARRAY_SIZE\n;\n \nj\n++\n)\n\n \na\n[\nj\n]\n \n=\n \nb\n[\nj\n]\n+\nscalar\n*\nc\n[\nj\n];\n\n\n}\n\n\n\n__itt_pause\n();\n \n// stop VTune\n\n\n__SSC_MARK\n(\n0x222\n);\n \n// stop SDE tracing\n\n\n\n\n\nLaTex support\n\u00b6\n\n\n\\[\n\\frac{n!}{k!(n-k)!} = \\binom{n}{k}\n\\]\nfrom:\n\n\n$$\n\n\n\\frac\n{n\n!\n}{k\n!(\nn\n-\nk\n)!\n} \n=\n \n\\binom\n{n}{k}\n\n\n$$",
+            "location": "/demo/demo2/", 
+            "text": "Lorem\n\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\n\nCori performance\n\n\nA table\n\n\n\n\n\n\n\n\nSystem Type\n\n\nCray XC40\n\n\n\n\n\n\n\n\n\n\nTheoretical Peak Performance (System)\n\n\n31.4 PFlops\n\n\n\n\n\n\nTheoretical Peak Performance (Haswell nodes)\n\n\n2.3 PFlops\n\n\n\n\n\n\nTheoretical Peak Performance (Xeon Phi nodes)\n\n\n29.1 PFlops\n\n\n\n\n\n\n\n\nBasic example\n\n\n\n\nWarning\n\n\nInclude paths are specified relative to the base \ndocs\n directory.\n\n\n\n\nA useful code for checking thread and process affinity.\n\n\n#define _GNU_SOURCE\n\n\n\n#include\n \nstdio.h\n\n\n#include\n \nunistd.h\n\n\n#include\n \nstring.h\n\n\n#include\n \nsched.h\n\n\n#include\n \nmpi.h\n\n\n#include\n \nomp.h\n\n\n\n/* Borrowed from util-linux-2.13-pre7/schedutils/taskset.c */\n\n\nstatic\n \nchar\n \n*\ncpuset_to_cstr\n(\ncpu_set_t\n \n*\nmask\n,\n \nchar\n \n*\nstr\n)\n\n\n{\n\n  \nchar\n \n*\nptr\n \n=\n \nstr\n;\n\n  \nint\n \ni\n,\n \nj\n,\n \nentry_made\n \n=\n \n0\n;\n\n  \nfor\n \n(\ni\n \n=\n \n0\n;\n \ni\n \n \nCPU_SETSIZE\n;\n \ni\n++\n)\n \n{\n\n    \nif\n \n(\nCPU_ISSET\n(\ni\n,\n \nmask\n))\n \n{\n\n      \nint\n \nrun\n \n=\n \n0\n;\n\n      \nentry_made\n \n=\n \n1\n;\n\n      \nfor\n \n(\nj\n \n=\n \ni\n \n+\n \n1\n;\n \nj\n \n \nCPU_SETSIZE\n;\n \nj\n++\n)\n \n{\n\n        \nif\n \n(\nCPU_ISSET\n(\nj\n,\n \nmask\n))\n \nrun\n++\n;\n\n        \nelse\n \nbreak\n;\n\n      \n}\n\n      \nif\n \n(\n!\nrun\n)\n\n        \nsprintf\n(\nptr\n,\n \n%d,\n,\n \ni\n);\n\n      \nelse\n \nif\n \n(\nrun\n \n==\n \n1\n)\n \n{\n\n        \nsprintf\n(\nptr\n,\n \n%d,%d,\n,\n \ni\n,\n \ni\n \n+\n \n1\n);\n\n        \ni\n++\n;\n\n      \n}\n \nelse\n \n{\n\n        \nsprintf\n(\nptr\n,\n \n%d-%d,\n,\n \ni\n,\n \ni\n \n+\n \nrun\n);\n\n        \ni\n \n+=\n \nrun\n;\n\n      \n}\n\n      \nwhile\n \n(\n*\nptr\n \n!=\n \n0\n)\n \nptr\n++\n;\n\n    \n}\n\n  \n}\n\n  \nptr\n \n-=\n \nentry_made\n;\n\n  \n*\nptr\n \n=\n \n0\n;\n\n  \nreturn\n(\nstr\n);\n\n\n}\n\n\n\nint\n \nmain\n(\nint\n \nargc\n,\n \nchar\n \n*\nargv\n[])\n\n\n{\n\n  \nint\n \nrank\n,\n \nthread\n;\n\n  \ncpu_set_t\n \ncoremask\n;\n\n  \nchar\n \nclbuf\n[\n7\n \n*\n \nCPU_SETSIZE\n],\n \nhnbuf\n[\n64\n];\n\n\n  \nMPI_Init\n(\nargc\n,\n \nargv\n);\n\n  \nMPI_Comm_rank\n(\nMPI_COMM_WORLD\n,\n \nrank\n);\n\n  \nmemset\n(\nclbuf\n,\n \n0\n,\n \nsizeof\n(\nclbuf\n));\n\n  \nmemset\n(\nhnbuf\n,\n \n0\n,\n \nsizeof\n(\nhnbuf\n));\n\n  \n(\nvoid\n)\ngethostname\n(\nhnbuf\n,\n \nsizeof\n(\nhnbuf\n));\n\n\n#pragma omp parallel private(thread, coremask, clbuf)\n\n  \n{\n\n    \nthread\n \n=\n \nomp_get_thread_num\n();\n\n    \n(\nvoid\n)\nsched_getaffinity\n(\n0\n,\n \nsizeof\n(\ncoremask\n),\n \ncoremask\n);\n\n    \ncpuset_to_cstr\n(\ncoremask\n,\n \nclbuf\n);\n\n    \n#pragma omp barrier\n\n    \nprintf\n(\nHello from rank %d, thread %d, on %s. (core affinity = %s)\n\\n\n,\n\n       \nrank\n,\n \nthread\n,\n \nhnbuf\n,\n \nclbuf\n);\n\n  \n}\n\n  \nMPI_Finalize\n();\n\n  \nreturn\n(\n0\n);\n\n\n}\n\n\n\n\n\nCompilation\n\n\nTARGET\n \n=\n xthi\n\nLIBS\n \n=\n \n\nCC\n \n=\n cc\n\nCFLAGS\n \n=\n -g -Wall -qopenmp\n\n\n.PHONY\n:\n \ndefault\n \nall\n \nclean\n\n\n\ndefault\n:\n \n$(\nTARGET\n)\n\n\nall\n:\n \ndefault\n\n\n\nOBJECTS\n \n=\n \n$(\npatsubst %.c, %.o, \n$(\nwildcard *.c\n))\n\n\nHEADERS\n \n=\n \n$(\nwildcard *.h\n)\n\n\n\n%.o\n:\n %.\nc\n \n$(\nHEADERS\n)\n\n    \n$(\nCC\n)\n \n$(\nCFLAGS\n)\n -c $\n -o \n$@\n\n\n\n.PRECIOUS\n:\n \n$(\nTARGET\n)\n \n$(\nOBJECTS\n)\n\n\n\n$(TARGET)\n:\n \n$(\nOBJECTS\n)\n\n    \n$(\nCC\n)\n \n$(\nCFLAGS\n)\n \n$(\nOBJECTS\n)\n -Wall \n$(\nLIBS\n)\n -o \n$@\n\n\n\nclean\n:\n\n    -rm -f *.o\n    -rm -f \n$(\nTARGET\n)\n\n\n\n\n\nRunning the executable\n\n\nSubmit the script with the \nsbatch\n command:\n\n\n#!/bin/bash\n\n\n#SBATCH -N 2\n\n\n#SBATCH -p debug\n\n\n#SBATCH -t 00:05:00\n\n\n\n#OpenMP settings:\n\n\nexport\n \nOMP_NUM_THREADS\n=\n4\n\n\nexport\n \nOMP_PLACES\n=\nthreads\n\nexport\n \nOMP_PROC_BIND\n=\nspread\n\n\n#run the application:\n\nsbcast ./xthi /tmp/xthi\nsrun -n \n12\n -c \n8\n --cpu_bind\n=\ncores /tmp/xthi \n|\n sort\n\n\n\n\n\n\nWarning\n\n\nThe \n-c\n and \n--cpu_bind=\n options for \nsrun\n are \nrequired\n for hybrid jobs or jobs which do not utilize all physical cores \n\n\n\n\nSome source code\n\n\nInstrumented C code to measure AI\n\n\n// Code must be built with appropriate paths for VTune include file (ittnotify.h) and library (-littnotify)\n\n\n#include\n \nittnotify.h\n\n\n\n__SSC_MARK\n(\n0x111\n);\n \n// start SDE tracing, note it uses 2 underscores\n\n\n__itt_resume\n();\n \n// start VTune, again use 2 underscores\n\n\n\nfor\n \n(\nk\n=\n0\n;\n \nk\nNTIMES\n;\n \nk\n++\n)\n \n{\n\n \n#pragma omp parallel for\n\n \nfor\n \n(\nj\n=\n0\n;\n \nj\nSTREAM_ARRAY_SIZE\n;\n \nj\n++\n)\n\n \na\n[\nj\n]\n \n=\n \nb\n[\nj\n]\n+\nscalar\n*\nc\n[\nj\n];\n\n\n}\n\n\n\n__itt_pause\n();\n \n// stop VTune\n\n\n__SSC_MARK\n(\n0x222\n);\n \n// stop SDE tracing\n\n\n\n\n\nLaTex support\n\n\n\\[\n\\frac{n!}{k!(n-k)!} = \\binom{n}{k}\n\\]\nfrom:\n\n\n$$\n\n\n\\frac\n{n\n!\n}{k\n!(\nn\n-\nk\n)!\n} \n=\n \n\\binom\n{n}{k}\n\n\n$$", 
             "title": "Example 2"
-        },
+        }, 
         {
-            "location": "/demo/demo2/#lorem",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+            "location": "/demo/demo2/#lorem", 
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
             "title": "Lorem"
-        },
+        }, 
         {
-            "location": "/demo/demo2/#cori-performance",
-            "text": "A table     System Type  Cray XC40      Theoretical Peak Performance (System)  31.4 PFlops    Theoretical Peak Performance (Haswell nodes)  2.3 PFlops    Theoretical Peak Performance (Xeon Phi nodes)  29.1 PFlops",
+            "location": "/demo/demo2/#cori-performance", 
+            "text": "A table     System Type  Cray XC40      Theoretical Peak Performance (System)  31.4 PFlops    Theoretical Peak Performance (Haswell nodes)  2.3 PFlops    Theoretical Peak Performance (Xeon Phi nodes)  29.1 PFlops", 
             "title": "Cori performance"
-        },
+        }, 
         {
-            "location": "/demo/demo2/#basic-example",
-            "text": "Warning  Include paths are specified relative to the base  docs  directory.   A useful code for checking thread and process affinity.  #define _GNU_SOURCE  #include   <stdio.h>  #include   <unistd.h>  #include   <string.h>  #include   <sched.h>  #include   <mpi.h>  #include   <omp.h>  /* Borrowed from util-linux-2.13-pre7/schedutils/taskset.c */  static   char   * cpuset_to_cstr ( cpu_set_t   * mask ,   char   * str )  { \n   char   * ptr   =   str ; \n   int   i ,   j ,   entry_made   =   0 ; \n   for   ( i   =   0 ;   i   <   CPU_SETSIZE ;   i ++ )   { \n     if   ( CPU_ISSET ( i ,   mask ))   { \n       int   run   =   0 ; \n       entry_made   =   1 ; \n       for   ( j   =   i   +   1 ;   j   <   CPU_SETSIZE ;   j ++ )   { \n         if   ( CPU_ISSET ( j ,   mask ))   run ++ ; \n         else   break ; \n       } \n       if   ( ! run ) \n         sprintf ( ptr ,   \"%d,\" ,   i ); \n       else   if   ( run   ==   1 )   { \n         sprintf ( ptr ,   \"%d,%d,\" ,   i ,   i   +   1 ); \n         i ++ ; \n       }   else   { \n         sprintf ( ptr ,   \"%d-%d,\" ,   i ,   i   +   run ); \n         i   +=   run ; \n       } \n       while   ( * ptr   !=   0 )   ptr ++ ; \n     } \n   } \n   ptr   -=   entry_made ; \n   * ptr   =   0 ; \n   return ( str );  }  int   main ( int   argc ,   char   * argv [])  { \n   int   rank ,   thread ; \n   cpu_set_t   coremask ; \n   char   clbuf [ 7   *   CPU_SETSIZE ],   hnbuf [ 64 ]; \n\n   MPI_Init ( & argc ,   & argv ); \n   MPI_Comm_rank ( MPI_COMM_WORLD ,   & rank ); \n   memset ( clbuf ,   0 ,   sizeof ( clbuf )); \n   memset ( hnbuf ,   0 ,   sizeof ( hnbuf )); \n   ( void ) gethostname ( hnbuf ,   sizeof ( hnbuf ));  #pragma omp parallel private(thread, coremask, clbuf) \n   { \n     thread   =   omp_get_thread_num (); \n     ( void ) sched_getaffinity ( 0 ,   sizeof ( coremask ),   & coremask ); \n     cpuset_to_cstr ( & coremask ,   clbuf ); \n     #pragma omp barrier \n     printf ( \"Hello from rank %d, thread %d, on %s. (core affinity = %s) \\n \" , \n        rank ,   thread ,   hnbuf ,   clbuf ); \n   } \n   MPI_Finalize (); \n   return ( 0 );  }",
+            "location": "/demo/demo2/#basic-example", 
+            "text": "Warning  Include paths are specified relative to the base  docs  directory.   A useful code for checking thread and process affinity.  #define _GNU_SOURCE  #include   stdio.h  #include   unistd.h  #include   string.h  #include   sched.h  #include   mpi.h  #include   omp.h  /* Borrowed from util-linux-2.13-pre7/schedutils/taskset.c */  static   char   * cpuset_to_cstr ( cpu_set_t   * mask ,   char   * str )  { \n   char   * ptr   =   str ; \n   int   i ,   j ,   entry_made   =   0 ; \n   for   ( i   =   0 ;   i     CPU_SETSIZE ;   i ++ )   { \n     if   ( CPU_ISSET ( i ,   mask ))   { \n       int   run   =   0 ; \n       entry_made   =   1 ; \n       for   ( j   =   i   +   1 ;   j     CPU_SETSIZE ;   j ++ )   { \n         if   ( CPU_ISSET ( j ,   mask ))   run ++ ; \n         else   break ; \n       } \n       if   ( ! run ) \n         sprintf ( ptr ,   %d, ,   i ); \n       else   if   ( run   ==   1 )   { \n         sprintf ( ptr ,   %d,%d, ,   i ,   i   +   1 ); \n         i ++ ; \n       }   else   { \n         sprintf ( ptr ,   %d-%d, ,   i ,   i   +   run ); \n         i   +=   run ; \n       } \n       while   ( * ptr   !=   0 )   ptr ++ ; \n     } \n   } \n   ptr   -=   entry_made ; \n   * ptr   =   0 ; \n   return ( str );  }  int   main ( int   argc ,   char   * argv [])  { \n   int   rank ,   thread ; \n   cpu_set_t   coremask ; \n   char   clbuf [ 7   *   CPU_SETSIZE ],   hnbuf [ 64 ]; \n\n   MPI_Init ( argc ,   argv ); \n   MPI_Comm_rank ( MPI_COMM_WORLD ,   rank ); \n   memset ( clbuf ,   0 ,   sizeof ( clbuf )); \n   memset ( hnbuf ,   0 ,   sizeof ( hnbuf )); \n   ( void ) gethostname ( hnbuf ,   sizeof ( hnbuf ));  #pragma omp parallel private(thread, coremask, clbuf) \n   { \n     thread   =   omp_get_thread_num (); \n     ( void ) sched_getaffinity ( 0 ,   sizeof ( coremask ),   coremask ); \n     cpuset_to_cstr ( coremask ,   clbuf ); \n     #pragma omp barrier \n     printf ( Hello from rank %d, thread %d, on %s. (core affinity = %s) \\n , \n        rank ,   thread ,   hnbuf ,   clbuf ); \n   } \n   MPI_Finalize (); \n   return ( 0 );  }", 
             "title": "Basic example"
-        },
+        }, 
         {
-            "location": "/demo/demo2/#compilation",
-            "text": "TARGET   =  xthi LIBS   =   CC   =  cc CFLAGS   =  -g -Wall -qopenmp .PHONY :   default   all   clean  default :   $( TARGET )  all :   default  OBJECTS   =   $( patsubst %.c, %.o,  $( wildcard *.c ))  HEADERS   =   $( wildcard *.h )  %.o :  %. c   $( HEADERS ) \n     $( CC )   $( CFLAGS )  -c $< -o  $@  .PRECIOUS :   $( TARGET )   $( OBJECTS )  $(TARGET) :   $( OBJECTS ) \n     $( CC )   $( CFLAGS )   $( OBJECTS )  -Wall  $( LIBS )  -o  $@  clean : \n    -rm -f *.o\n    -rm -f  $( TARGET )",
+            "location": "/demo/demo2/#compilation", 
+            "text": "TARGET   =  xthi LIBS   =   CC   =  cc CFLAGS   =  -g -Wall -qopenmp .PHONY :   default   all   clean  default :   $( TARGET )  all :   default  OBJECTS   =   $( patsubst %.c, %.o,  $( wildcard *.c ))  HEADERS   =   $( wildcard *.h )  %.o :  %. c   $( HEADERS ) \n     $( CC )   $( CFLAGS )  -c $  -o  $@  .PRECIOUS :   $( TARGET )   $( OBJECTS )  $(TARGET) :   $( OBJECTS ) \n     $( CC )   $( CFLAGS )   $( OBJECTS )  -Wall  $( LIBS )  -o  $@  clean : \n    -rm -f *.o\n    -rm -f  $( TARGET )", 
             "title": "Compilation"
-        },
+        }, 
         {
-            "location": "/demo/demo2/#running-the-executable",
-            "text": "Submit the script with the  sbatch  command:  #!/bin/bash  #SBATCH -N 2  #SBATCH -p debug  #SBATCH -t 00:05:00  #OpenMP settings:  export   OMP_NUM_THREADS = 4  export   OMP_PLACES = threads export   OMP_PROC_BIND = spread #run the application: \nsbcast ./xthi /tmp/xthi\nsrun -n  12  -c  8  --cpu_bind = cores /tmp/xthi  |  sort   Warning  The  -c  and  --cpu_bind=  options for  srun  are  required  for hybrid jobs or jobs which do not utilize all physical cores",
+            "location": "/demo/demo2/#running-the-executable", 
+            "text": "Submit the script with the  sbatch  command:  #!/bin/bash  #SBATCH -N 2  #SBATCH -p debug  #SBATCH -t 00:05:00  #OpenMP settings:  export   OMP_NUM_THREADS = 4  export   OMP_PLACES = threads export   OMP_PROC_BIND = spread #run the application: \nsbcast ./xthi /tmp/xthi\nsrun -n  12  -c  8  --cpu_bind = cores /tmp/xthi  |  sort   Warning  The  -c  and  --cpu_bind=  options for  srun  are  required  for hybrid jobs or jobs which do not utilize all physical cores", 
             "title": "Running the executable"
-        },
+        }, 
         {
-            "location": "/demo/demo2/#some-source-code",
-            "text": "Instrumented C code to measure AI  // Code must be built with appropriate paths for VTune include file (ittnotify.h) and library (-littnotify)  #include   <ittnotify.h>  __SSC_MARK ( 0x111 );   // start SDE tracing, note it uses 2 underscores  __itt_resume ();   // start VTune, again use 2 underscores  for   ( k = 0 ;   k < NTIMES ;   k ++ )   { \n  #pragma omp parallel for \n  for   ( j = 0 ;   j < STREAM_ARRAY_SIZE ;   j ++ ) \n  a [ j ]   =   b [ j ] + scalar * c [ j ];  }  __itt_pause ();   // stop VTune  __SSC_MARK ( 0x222 );   // stop SDE tracing",
+            "location": "/demo/demo2/#some-source-code", 
+            "text": "Instrumented C code to measure AI  // Code must be built with appropriate paths for VTune include file (ittnotify.h) and library (-littnotify)  #include   ittnotify.h  __SSC_MARK ( 0x111 );   // start SDE tracing, note it uses 2 underscores  __itt_resume ();   // start VTune, again use 2 underscores  for   ( k = 0 ;   k NTIMES ;   k ++ )   { \n  #pragma omp parallel for \n  for   ( j = 0 ;   j STREAM_ARRAY_SIZE ;   j ++ ) \n  a [ j ]   =   b [ j ] + scalar * c [ j ];  }  __itt_pause ();   // stop VTune  __SSC_MARK ( 0x222 );   // stop SDE tracing", 
             "title": "Some source code"
-        },
+        }, 
         {
-            "location": "/demo/demo2/#latex-support",
-            "text": "\\[\n\\frac{n!}{k!(n-k)!} = \\binom{n}{k}\n\\] from:  $$  \\frac {n ! }{k !( n - k )! }  =   \\binom {n}{k}  $$",
+            "location": "/demo/demo2/#latex-support", 
+            "text": "\\[\n\\frac{n!}{k!(n-k)!} = \\binom{n}{k}\n\\] from:  $$  \\frac {n ! }{k !( n - k )! }  =   \\binom {n}{k}  $$", 
             "title": "LaTex support"
-        },
+        }, 
         {
-            "location": "/data/analytics/analytics/",
-            "text": "",
+            "location": "/data/analytics/analytics/", 
+            "text": "", 
             "title": "Analytics"
-        },
+        }, 
         {
-            "location": "/data/management/management/",
-            "text": "",
+            "location": "/data/management/management/", 
+            "text": "", 
             "title": "Management"
-        },
+        }, 
         {
-            "location": "/data/transfer/transfer/",
-            "text": "",
+            "location": "/data/transfer/transfer/", 
+            "text": "", 
             "title": "Transfer"
-        },
+        }, 
         {
-            "location": "/data/visualization/visualization/",
-            "text": "",
+            "location": "/data/visualization/visualization/", 
+            "text": "", 
             "title": "Visualization"
-        },
+        }, 
         {
-            "location": "/performance/case-studies/case-studies/",
-            "text": "",
+            "location": "/performance/case-studies/case-studies/", 
+            "text": "", 
             "title": "case-studies"
-        },
+        }, 
         {
-            "location": "/performance/optimization/optimization/",
-            "text": "",
+            "location": "/performance/optimization/optimization/", 
+            "text": "", 
             "title": "optimization"
-        },
+        }, 
         {
-            "location": "/performance/variability/variability/",
-            "text": "",
+            "location": "/performance/variability/variability/", 
+            "text": "", 
             "title": "variability"
-        },
+        }, 
         {
-            "location": "/services/jupyter/",
-            "text": "",
+            "location": "/services/jupyter/", 
+            "text": "", 
             "title": "jupyter"
-        },
+        }, 
         {
-            "location": "/services/nx/",
-            "text": "",
+            "location": "/services/nx/", 
+            "text": "", 
             "title": "nx"
-        },
+        }, 
         {
-            "location": "/services/science-gateways/",
-            "text": "",
+            "location": "/services/science-gateways/", 
+            "text": "", 
             "title": "science-gateways"
-        },
+        }, 
         {
-            "location": "/services/api/",
-            "text": "",
+            "location": "/services/api/", 
+            "text": "", 
             "title": "API"
-        },
+        }, 
         {
-            "location": "/software/analytics/analytics/",
-            "text": "",
+            "location": "/software/analytics/analytics/", 
+            "text": "", 
             "title": "analytics"
-        },
+        }, 
         {
-            "location": "/software/applications/namd/namd/",
-            "text": "",
+            "location": "/software/applications/namd/namd/", 
+            "text": "", 
             "title": "NAMD"
-        },
+        }, 
         {
-            "location": "/software/environment/environment/",
-            "text": "",
+            "location": "/software/environment/environment/", 
+            "text": "", 
             "title": "environment"
-        },
+        }, 
         {
-            "location": "/software/tools/tools/",
-            "text": "",
+            "location": "/software/tools/tools/", 
+            "text": "", 
             "title": "tools"
-        },
+        }, 
         {
-            "location": "/systems/cori/cori/",
-            "text": "",
+            "location": "/systems/cori/cori/", 
+            "text": "", 
             "title": "cori"
-        },
+        }, 
         {
-            "location": "/systems/edison/edison/",
-            "text": "",
+            "location": "/systems/edison/edison/", 
+            "text": "", 
             "title": "edison"
-        },
+        }, 
         {
-            "location": "/systems/slurm/slurm/",
-            "text": "",
+            "location": "/systems/slurm/slurm/", 
+            "text": "", 
             "title": "slurm"
-        },
+        }, 
         {
-            "location": "/systems/storage/storage/",
-            "text": "",
+            "location": "/systems/storage/storage/", 
+            "text": "", 
             "title": "storage"
-        },
+        }, 
         {
-            "location": "/tutorials/getting-started/getting-started/",
-            "text": "",
+            "location": "/tutorials/getting-started/getting-started/", 
+            "text": "", 
             "title": "getting-started"
         }
     ]
