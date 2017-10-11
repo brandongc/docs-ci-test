@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "NERSC Technical Documentation\n\n\n\n\nWarning\n\n\nUnder construction! Should not be considered an official source of any information.\n\n\n\n\nComplete guide to using NERSC systems, services and software.\n\n\nDemo\n\n\nWhy not checkout the \ndemo\n?", 
+            "text": "NERSC Technical Documentation\n\n\n\n\nWarning\n\n\nUnder construction! Should not be considered an official source of any information.\n\n\n\n\nComplete guide to using NERSC systems, services and software.\n\n\nDemo\n\n\nWhy not checkout the \ndemo\n?\n\n\nRelax: This is just a test!", 
             "title": "Home"
         }, 
         {
@@ -12,7 +12,7 @@
         }, 
         {
             "location": "/#demo", 
-            "text": "Why not checkout the  demo ?", 
+            "text": "Why not checkout the  demo ?  Relax: This is just a test!", 
             "title": "Demo"
         }, 
         {
