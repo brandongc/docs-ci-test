@@ -1,0 +1,18 @@
+env:
+  global:
+    - GIT_NAME: deploy-bot
+    - GIT_EMAIL: bgcook@lbl.gov
+    - GH_REF: git@github.com:brandongc/docs-ci-test.git
+language: python
+before_script:
+  - pip install -r requirements.txt
+script:
+  - openssl aes-256-cbc -K $encrypted_d7e5bf3dfc23_key -iv $encrypted_d7e5bf3dfc23_iv -in deploy-key.enc -out ../deploy-test/deploy-key -d
+  - chmod 600 deploy-key
+  - eval `ssh-agent -s`
+  - ssh-add deploy-key
+  - git config user.name "Automatic Publish"
+  - git config user.email "djw8605@gmail.com"
+  - git remote add gh-token "${GH_REF}";
+  - git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
+  - if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then echo "Pushing to github"; PYTHONPATH=src/ mkdocs gh-deploy -v --clean --remote-name gh-token; git push gh-token gh-pages; fi;
