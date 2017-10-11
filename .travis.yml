@@ -7,7 +7,7 @@ language: python
 before_script:
   - pip install -r requirements.txt
 script:
-  - openssl aes-256-cbc -K $encrypted_d7e5bf3dfc23_key -iv $encrypted_d7e5bf3dfc23_iv -in deploy-key.enc -out ../deploy-test/deploy-key -d
+  - openssl aes-256-cbc -K $encrypted_d7e5bf3dfc23_key -iv $encrypted_d7e5bf3dfc23_iv -in deploy-key.enc -out deploy-key -d
   - chmod 600 deploy-key
   - eval `ssh-agent -s`
   - ssh-add deploy-key
