@@ -9,4 +9,4 @@ Complete guide to using NERSC systems, services and software.
 
 Why not checkout the [demo](demo/demo.md)?
 
-Relax: This is just a test!
+A test?
