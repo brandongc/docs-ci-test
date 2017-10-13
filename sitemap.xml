@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -13,13 +13,13 @@
         
     <url>
      <loc>/demo/demo/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/demo/demo2/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -29,25 +29,25 @@
         
     <url>
      <loc>/data/analytics/analytics/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/data/management/management/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/data/transfer/transfer/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/data/visualization/visualization/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -57,19 +57,19 @@
         
     <url>
      <loc>/performance/case-studies/case-studies/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/performance/optimization/optimization/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/performance/variability/variability/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -79,25 +79,25 @@
         
     <url>
      <loc>/services/jupyter/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/services/nx/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/services/science-gateways/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/services/api/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -107,7 +107,7 @@
         
     <url>
      <loc>/software/analytics/analytics/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -119,13 +119,13 @@
         
     <url>
      <loc>/software/environment/environment/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/software/tools/tools/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -135,25 +135,25 @@
         
     <url>
      <loc>/systems/cori/cori/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/systems/edison/edison/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/systems/slurm/slurm/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/systems/storage/storage/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -163,7 +163,7 @@
         
     <url>
      <loc>/tutorials/getting-started/getting-started/</loc>
-     <lastmod>2017-10-11</lastmod>
+     <lastmod>2017-10-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
